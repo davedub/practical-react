@@ -1,5 +1,5 @@
 import React from 'react';
-import logo, { ReactComponent } from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 
 // eslint-disable-next-line no-undef
@@ -10,6 +10,7 @@ class Header extends React.Component {
         <h3>{this.props.title}</h3>
         <p>{this.props.num}</p>
         <p>{this.props.myObj.a + this.props.myObj.b}</p>
+        <div>{this.props.myFunc(6454, 3222)}</div>
         <p>
           {(this.props.myArr[0] + this.props.myArr[2]) / this.props.myArr[1]}
         </p>
@@ -19,7 +20,7 @@ class Header extends React.Component {
 }
 
 const Body = () => (
-  <div className="body">
+  <div>
     <img src={logo} className="App-logo" alt="logo" />
     <p>
       Edit <code> src / App.js </code> and save to reload.{' '}
@@ -36,8 +37,11 @@ const Body = () => (
 );
 
 class App extends React.Component {
+  add(a, b) {
+    return a + b;
+  }
+
   render() {
-    const add = (a, b) => a + b;
     return (
       <div>
         <header className="App-header">
@@ -48,6 +52,7 @@ class App extends React.Component {
               a: 523,
               b: 236,
             }}
+            myFunc={this.add}
             myArr={[303, 493, 291]}
           />
         </header>
