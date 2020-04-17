@@ -1,23 +1,34 @@
-import React from "react";
+import React from 'react';
 
 export default class ImageSlider extends React.Component {
   state = {
     images: [
-      "https://practical-react.s3-us-west-2.amazonaws.com/600x450_1.jpg",
-      "https://practical-react.s3-us-west-2.amazonaws.com/600x450_2.jpg",
-      "https://practical-react.s3-us-west-2.amazonaws.com/600x450_3.jpg",
-      "https://practical-react.s3-us-west-2.amazonaws.com/600x450_4.jpg"
+      'https://practical-react.s3-us-west-2.amazonaws.com/600x450_1.jpg',
+      'https://practical-react.s3-us-west-2.amazonaws.com/600x450_2.jpg',
+      'https://practical-react.s3-us-west-2.amazonaws.com/600x450_3.jpg',
+      'https://practical-react.s3-us-west-2.amazonaws.com/600x450_4.jpg',
     ],
-    idx: 0
+    idx: 0,
   };
   slideNext = () => {
     if (this.state.idx > 2) {
       this.setState({
-        idx: 0
+        idx: 0,
       });
     } else {
       return this.setState({
-        idx: this.state.idx + 1
+        idx: this.state.idx + 1,
+      });
+    }
+  };
+  slidePrev = () => {
+    if ((this.state.idx < 0) | (this.state.idx === 0)) {
+      this.setState({
+        idx: 3,
+      });
+    } else {
+      return this.setState({
+        idx: this.state.idx - 1,
       });
     }
   };
@@ -29,22 +40,14 @@ export default class ImageSlider extends React.Component {
           style={{
             width: 300,
             height: 225,
-            borderColor: "#676fbf",
-            borderStyle: "solid"
+            borderColor: '#676fbf',
+            borderStyle: 'solid',
           }}
           src={this.state.images[this.state.idx]}
         />
         <br />
         <button onClick={this.slideNext}>next</button>
-        <button
-          onClick={() => {
-            this.setState({
-              idx: this.state.idx - 1
-            });
-          }}
-        >
-          previous
-        </button>
+        <button onClick={this.slidePrev}>previous</button>
       </div>
     );
   }
