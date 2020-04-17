@@ -1,10 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Header from './components/Header';
-import { Nav } from './components/Nav';
-import { Body, Body2 } from './components/Body';
-import Counter from './components/Counter';
+import Header from "./components/Header";
+import { Nav } from "./components/Nav";
+import ImageSlider from "./components/ImageSlider";
+import Counter from "./components/Counter";
 
 class App extends React.Component {
   add(a, b) {
@@ -19,21 +19,14 @@ class App extends React.Component {
         <div className="AppNav">
           <Nav />
         </div>
-        <body className="App-body">
-          <Body
-            title="hello from the app"
-            num={4532}
-            myObj={{
-              a: 42333,
-              b: 236,
-            }}
-            myFunc={this.add}
-            myArr={[303, 493, 291]}
-          />
-          <Body2 />
+        <div className="App-body">
+          <br />
+          <ImageSlider />
+          <br />
           <Counter initialCount={0} />
+          <br />
           <Counter initialCount={1000} />
-        </body>
+        </div>
       </div>
     );
   }
