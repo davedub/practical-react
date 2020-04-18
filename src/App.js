@@ -1,16 +1,26 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
 
-import Header from "./components/Header";
-import { Nav } from "./components/Nav";
-import ImageSlider from "./components/ImageSlider";
-import Counter from "./components/Counter";
+import {Button} from 'reactstrap';
+
+import './App.css';
+
+import Counter from './components/Counter';
+import Header from './components/Header';
+import ImageSlider from './components/ImageSlider';
+import {Nav} from './components/Nav';
 
 class App extends React.Component {
-  add(a, b) {
-    return a + b;
-  }
+  state = {
+    visible: true,
+  };
+
   render() {
+    let slider = this.state.visible ? <ImageSlider /> : <div> I am hidden</div>;
+    if (!this.state.visible) {
+      slider = <div>display nothing</div>;
+    }
+    const buttonText = this.state.visible ? 'Hide' : 'Show';
+
     return (
       <div>
         <div className="App-header">
@@ -21,7 +31,15 @@ class App extends React.Component {
         </div>
         <div className="App-body">
           <br />
-          <ImageSlider />
+          {slider}
+          <br />
+          <Button
+            onClick={() => {
+              this.setState({visible: !this.state.visible});
+            }}
+          >
+            {buttonText}
+          </Button>
           <br />
           <Counter initialCount={0} />
           <br />
