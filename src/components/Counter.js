@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Button} from 'reactstrap';
 // eslint-disable-next-line no-undef
 
 export default class Counter extends React.Component {
@@ -22,9 +23,14 @@ export default class Counter extends React.Component {
   render() {
     return (
       <div>
-        <div>count: {this.state.count}</div>
-        <button onClick={this.increment}>increment</button>&nbsp;&nbsp;&nbsp;
-        <button onClick={this.decrement}>decrement</button>
+        <div id="count">Count: {this.state.count}</div>
+        <Button color="primary" onClick={this.increment}>
+          Increase
+        </Button>
+        &nbsp;&nbsp;&nbsp;
+        <Button color="primary" onClick={this.decrement}>
+          Decrease
+        </Button>
       </div>
     );
   }

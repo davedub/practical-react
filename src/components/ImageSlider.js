@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Button} from 'reactstrap';
 export default class ImageSlider extends React.Component {
   state = {
     images: [
@@ -43,11 +44,18 @@ export default class ImageSlider extends React.Component {
             borderColor: '#676fbf',
             borderStyle: 'solid',
           }}
+          alt=""
           src={this.state.images[this.state.idx]}
         />
         <br />
-        <button onClick={this.slideNext}>next</button>
-        <button onClick={this.slidePrev}>previous</button>
+        <div className="spaced-out">
+          <Button className="img-button" color="info" onClick={this.slideNext}>
+            next
+          </Button>
+          <Button className="img-button" color="info" onClick={this.slidePrev}>
+            previous
+          </Button>
+        </div>
       </div>
     );
   }
