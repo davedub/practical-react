@@ -16,12 +16,25 @@ class App extends React.Component {
   };
 
   render() {
-    const sliderBtn = this.state.sliderVisible
-      ? 'Hide Image Slider'
-      : 'Show Image Slider';
-    const counterBtn = this.state.counterVisible
-      ? 'Hide Counter'
-      : 'Show Counter';
+    let slider = this.state.sliderVisible ? (
+      <ImageSlider />
+    ) : (
+      <div> I am hidden</div>
+    );
+    if (!this.state.sliderVisible) {
+      slider = <div>Image Slider is hidden</div>;
+    }
+    const sliderBtn = this.state.sliderVisible ? 'Hide' : 'Show';
+
+    let counter = this.state.counterVisible ? (
+      <Counter initialCount={0} />
+    ) : (
+      <div> Counter is hidden</div>
+    );
+    if (!this.state.counterVisible) {
+      counter = <div>Counter is hidden</div>;
+    }
+    const counterBtn = this.state.counterVisible ? 'Hide' : 'Show';
 
     return (
       <div>
@@ -33,9 +46,7 @@ class App extends React.Component {
         </div>
         <div className="App-body">
           <br />
-          <div className={this.state.sliderVisible ? 'visible' : 'hidden'}>
-            <ImageSlider />
-          </div>
+          {slider}
           <br />
           <Button
             onClick={() => {
@@ -49,10 +60,7 @@ class App extends React.Component {
             {sliderBtn}
           </Button>
           <br />
-          <div className={this.state.counterVisible ? 'visible' : 'hidden'}>
-            <Counter initialCount={0} />
-          </div>
-          <br />
+          {counter}
           <Button
             onClick={() => {
               if (this.state.counterVisible) {

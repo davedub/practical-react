@@ -105,6 +105,8 @@ li {
 }
 .visible {
   display: inline-block;
+  background-color: darkmagenta;
+  padding: 8px 6px;
 }
 .hidden {
   display: none;
