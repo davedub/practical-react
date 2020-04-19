@@ -11,15 +11,30 @@ import {Nav} from './components/Nav';
 
 class App extends React.Component {
   state = {
-    visible: true,
+    sliderVisible: true,
+    counterVisible: true,
   };
 
   render() {
-    let slider = this.state.visible ? <ImageSlider /> : <div> I am hidden</div>;
-    if (!this.state.visible) {
-      slider = <div>display nothing</div>;
+    let slider = this.state.sliderVisible ? (
+      <ImageSlider />
+    ) : (
+      <div> I am hidden</div>
+    );
+    if (!this.state.sliderVisible) {
+      slider = <div>Image Slider is hidden</div>;
     }
-    const buttonText = this.state.visible ? 'Hide' : 'Show';
+    const sliderBtn = this.state.sliderVisible ? 'Hide' : 'Show';
+
+    let counter = this.state.counterVisible ? (
+      <Counter initialCount={0} />
+    ) : (
+      <div> Counter is hidden</div>
+    );
+    if (!this.state.counterVisible) {
+      counter = <div>Counter is hidden</div>;
+    }
+    const counterBtn = this.state.counterVisible ? 'Hide' : 'Show';
 
     return (
       <div>
@@ -35,15 +50,28 @@ class App extends React.Component {
           <br />
           <Button
             onClick={() => {
-              this.setState({visible: !this.state.visible});
+              if (this.state.sliderVisible) {
+                this.setState({sliderVisible: false});
+              } else {
+                this.setState({sliderVisible: true});
+              }
             }}
           >
-            {buttonText}
+            {sliderBtn}
           </Button>
           <br />
-          <Counter initialCount={0} />
-          <br />
-          <Counter initialCount={1000} />
+          {counter}
+          <Button
+            onClick={() => {
+              if (this.state.counterVisible) {
+                this.setState({counterVisible: false});
+              } else {
+                this.setState({counterVisible: true});
+              }
+            }}
+          >
+            {counterBtn}
+          </Button>
         </div>
       </div>
     );
