@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 export default class Leadership extends React.Component {
   render() {
     return (
       <div>
-        <h4>Our leadership</h4>
+        <h2>Our leadership</h2>
         <p>
           Subway tile biodiesel forage cloud bread, portland asymmetrical
           flexitarian messenger bag 90's tilde pickled bespoke williamsburg

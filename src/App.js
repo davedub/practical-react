@@ -1,67 +1,42 @@
 import React from "react";
-import { Button } from "reactstrap";
+
 import "./App.css";
-
-import Counter from "./components/Counter";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
-import ImageSlider from "./components/ImageSlider";
-import Nav from "./components/Nav";
+import Navbar from "./components/Navbar";
+import Home from "./pages/home";
+import Leadership from "./pages/leadership";
+import About from "./pages/about";
+import Contact from "./pages/contact";
 
+const Container = () => {
+  return (
+    <div className="App-body">
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/leadership" exact component={Leadership} />
+          <Route path="/about" exact component={About} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/" render={() => <div>404</div>} />
+        </Switch>
+      </Router>
+    </div>
+  );
+};
 class App extends React.Component {
-  state = {
-    sliderVisible: true,
-    counterVisible: true,
-  };
-
   render() {
-    const sliderBtn = this.state.sliderVisible
-      ? "Hide Image Slider"
-      : "Show Image Slider";
-    const counterBtn = this.state.counterVisible
-      ? "Hide Counter"
-      : "Show Counter";
-
     return (
       <div>
         <div className="App-header">
           <Header title="My Header" subtitle="My Subheader" />
         </div>
         <div className="AppNav">
-          <Nav />
+          <Navbar />
         </div>
         <div className="App-body">
           <br />
-          <div className={this.state.sliderVisible ? "visible" : "hidden"}>
-            <ImageSlider />
-          </div>
-          <br />
-          <Button
-            onClick={() => {
-              if (this.state.sliderVisible) {
-                this.setState({ sliderVisible: false });
-              } else {
-                this.setState({ sliderVisible: true });
-              }
-            }}
-          >
-            {sliderBtn}
-          </Button>
-          <br />
-          <div className={this.state.counterVisible ? "visible" : "hidden"}>
-            <Counter initialCount={0} />
-          </div>
-          <br />
-          <Button
-            onClick={() => {
-              if (this.state.counterVisible) {
-                this.setState({ counterVisible: false });
-              } else {
-                this.setState({ counterVisible: true });
-              }
-            }}
-          >
-            {counterBtn}
-          </Button>
+          <Container />
         </div>
       </div>
     );

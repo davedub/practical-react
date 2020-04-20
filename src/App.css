@@ -82,6 +82,18 @@ p {
   color: powderblue;
   /* justify-content: center; */
 }
+.App-body h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+.App-body p {
+  text-align: left;
+  max-width: 80%;
+  padding-left: 10vmin;
+  margin: 0px auto;
+}
 
 .Nav-link {
   color: #637df0;
