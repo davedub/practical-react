@@ -134,3 +134,8 @@ h3 {
 .hidden {
   display: none;
 }
+.webForm {
+  margin-top: 18px;
+  display: block;
+  text-align: center;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import WebForm from "../../components/webform";
 
 export default class Contact extends React.Component {
   render() {
@@ -10,6 +11,9 @@ export default class Contact extends React.Component {
           flexitarian messenger bag 90's tilde pickled bespoke williamsburg
           vinyl banjo.
         </p>
+        <div className="Webform">
+          <WebForm />
+        </div>
       </div>
     );
   }
